@@ -50,9 +50,10 @@
                             vx = vy = 0;
                             tail = 3;
                             if (pontos > 0) {
-                                alert ("Game Over! " + pontos)
+                                alert ("Game Over ! Sua pontuação foi : " + pontos)
                             }
                             pontos = 0;
+                            
                         }  
                           
                     }
