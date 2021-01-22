@@ -3,7 +3,7 @@
                 var ctx = stage.getContext("2d");
                 document.addEventListener("keydown", keyPush);
 
-                setInterval(game, 70);
+                setInterval(game, 120);
 
                 const vel = 1;
 
@@ -13,7 +13,10 @@
                 var tp = 20;
                 var qp = 20;
                 var ax= ay =15;
-
+                var cont = 0;
+                var pontos = 0;
+                var contagem = 0;
+    
                 var trail = [];
                 tail = 5;
 
@@ -41,14 +44,17 @@
 
                     ctx.fillStyle = "gray";
                     for (var i = 0; i < trail.length; i++) {
+                       
                         ctx.fillRect(trail[i].x*tp, trail[i].y*tp, tp-1, tp-1);
-
                         if (trail[i].x == px && trail[i].y == py) {
-
                             vx = vy = 0;
-                            tail = 5;
-
-                        }
+                            tail = 3;
+                            if (pontos > 0) {
+                                alert ("Game Over! " + pontos)
+                            }
+                            pontos = 0;
+                        }  
+                          
                     }
 
                     trail.push({x:px, y:py})
@@ -58,9 +64,14 @@
                     
                     if (ax == px && ay == py) {
                         tail++;
+                        pontos++;
                         ax = Math.floor(Math.random()*qp);
                         ay = Math.floor(Math.random()*qp);
                     }   
+                }
+
+                function acabou (fim) {  
+                       window.alert('Game Over');
                 }
 
                 function keyPush(event) {
